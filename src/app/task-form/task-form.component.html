@@ -1,0 +1,55 @@
+<section class="container p-5">
+    <h3>{{isNew ? "Add":"Edit"}}Task</h3>
+    <form class="form" #f="ngForm">
+        <div>
+            <label>TaskId</label>
+            <input type="number" name="taskID" [(ngModel)]="task.taskID" class="form-control"
+            [readonly]="!isNew" required="required" min="100" #tid="ngModel"/>
+            <ol *ngIf="(tid.touched || tid.dirty) && tid.invalid">
+                <li *ngIf="tid.errors.required">Can not be left blank</li>
+                <li *ngIf="tid.errors.min">Can not be less than 100</li>
+            </ol>
+        </div>
+        <div>
+            <label>Task Name</label>
+            <input type="text"
+            name="taskName" [(ngModel)]="task.taskName" class="form-control"  required #tnm="ngModel"
+            minlength="5"/>
+            <ol *ngIf="(tnm.touched || tnm.dirty) && tnm.invalid" >
+                <li *ngIf="tnm.errors.required" >Can not be left blank</li>
+                <li *ngIf="tnm.errors.minlength">Can not be less than 5 chars</li>
+            </ol>
+        </div>
+       
+
+        <div>
+           
+            <label>Start Date</label>
+            <input type="date"
+            name="startDate" [(ngModel)]="task.startDate" class="form-control"  required  #sd="ngModel" 
+           />
+            <ol *ngIf="(sd.touched || sd.dirty) && sd.invalid" >
+                <li *ngIf="sd.errors.required" >Can not be left blank</li>
+              
+            </ol>
+        </div>
+
+        <div>
+           
+            <label>End Date</label>
+            <input type="date"
+            name="endDate" [(ngModel)]="task.endDate" class="form-control"  required  #ed="ngModel" 
+           />
+            <ol *ngIf="(ed.touched || ed.dirty) && ed.invalid" >
+                <li *ngIf="ed.errors.required" >Can not be left blank</li>
+              
+            </ol>
+        </div>
+        <div class="text-right">
+            <button type="button" name="btnSave" class="btn btn-primary"
+            [disabled]="f.invalid"
+            (click)="save()">ADD</button>
+        </div>
+
+    </form>
+</section>

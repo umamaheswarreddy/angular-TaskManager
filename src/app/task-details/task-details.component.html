@@ -1,0 +1,32 @@
+<section class="container-fluid bg-light p-5">
+    <h3>Task</h3>
+    <div class="card" *ngIf="task==null">
+        <p class="card-text">No Task Found</p>
+    </div>
+    <table class="table w-50 table-bordered" *ngIf="task!=null">
+        <tr>
+            <th>Task#</th>
+            <td>{{task.taskID}}</td>
+        </tr>
+        <tr>
+            <th>Task Name</th>
+            <td>{{task.taskName}}</td>
+        </tr>
+        
+        <tr>
+            <th>Start Date</th>
+            <td>{{task.startDate | date:'dd-MMM-yyyy'}}</td>
+        </tr>
+        <tr>
+            <th>End Date</th>
+            <td>{{task.endDate | date:'dd-MMM-yyyy'}}</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="pull-right">
+                <a class="btn btn-success btn-sm mr-2"
+              >EDIT</a>
+            </th>
+        </tr>
+    </table>
+    
+</section>
